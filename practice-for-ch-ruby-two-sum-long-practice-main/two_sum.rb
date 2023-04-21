@@ -16,8 +16,11 @@
 
 def okay_two_sum?(arr, target_sum)
    arr.sort!
-   arr.bsearch {|x| (target_sum - x) == x }
-    
+   arr.each_with_index do |ele, i|
+    index = arr.bsearch_index {|x| x == (target_sum - ele)} 
+    return true if index && index != i 
+   end
+   false
 end
 
 arr = [0, 1, 5, 7]
